@@ -6,7 +6,7 @@
 /*   By: gbianco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:39:10 by gbianco           #+#    #+#             */
-/*   Updated: 2020/08/02 16:24:44 by gbianco          ###   ########.fr       */
+/*   Updated: 2020/08/03 22:30:05 by gbianco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	sprite_vertical_intersection(t_frame *t)
 {
-	double y;
-	double y2;
-	double dist;
+	float y;
+	float y2;
+	float dist;
 
-	y = t->ray.pos.y / 64.;
+	y = t->ray.pos.y * 0.015625;
 	y2 = (int)y;
 	y2 += 0.5;
 	if (fabs(y2 - y) < SENSSPR)
@@ -61,15 +61,15 @@ void	vertical_rightdir(t_frame *t, t_vec2 *p, int n)
 {
 	if (t->wall.check_v == 0)
 	{
-		p->x = (int)(t->ray.pos.x / (double)n + 1);
-		p->x = p->x * (double)n;
+		p->x = (int)(t->ray.pos.x / (float)n + 1);
+		p->x = p->x * (float)n;
 		p->y = t->ray.pos.y + (p->x - t->ray.pos.x) * tan(t->ray.angle);
 		t->ray.pos.x = p->x;
 		t->ray.pos.y = p->y;
 		t->wall.check_v = 1;
 		return ;
 	}
-	p->x = (double)n;
+	p->x = (float)n;
 	p->y = p->x * tan(t->ray.angle);
 	t->ray.pos.x += p->x;
 	t->ray.pos.y += p->y;
@@ -79,21 +79,21 @@ void	vertical_leftdir(t_frame *t, t_vec2 *p, int n)
 {
 	if (t->wall.check_v == 0)
 	{
-		p->x = (int)(t->ray.pos.x / (double)n);
-		p->x = p->x * (double)n - 0.000001;
+		p->x = (int)(t->ray.pos.x / (float)n);
+		p->x = p->x * (float)n - 0.000001;
 		p->y = t->ray.pos.y + (p->x - t->ray.pos.x) * tan(t->ray.angle);
 		t->ray.pos.x = p->x;
 		t->ray.pos.y = p->y;
 		t->wall.check_v = 1;
 		return ;
 	}
-	p->x = -(double)n;
+	p->x = -(float)n;
 	p->y = p->x * tan(t->ray.angle);
 	t->ray.pos.x += p->x;
 	t->ray.pos.y += p->y;
 }
 
-double	vertical_intersections(t_frame *t)
+float	vertical_intersections(t_frame *t)
 {
 	t_vec2	p;
 	int		check;

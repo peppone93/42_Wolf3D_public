@@ -6,7 +6,7 @@
 /*   By: gbianco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:40:13 by gbianco           #+#    #+#             */
-/*   Updated: 2020/08/02 16:23:12 by gbianco          ###   ########.fr       */
+/*   Updated: 2020/08/03 20:30:47 by gbianco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,7 @@ void	sdl_handekeys(t_frame *t)
 		check = 1;
 	}
 	if (check == 1)
-	{
 		start_casting(t);
-	}
 }
 
 void	sdl_wait(t_frame *t)

@@ -6,7 +6,7 @@
 /*   By: gbianco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:39:21 by gbianco           #+#    #+#             */
-/*   Updated: 2020/08/02 16:24:09 by gbianco          ###   ########.fr       */
+/*   Updated: 2020/08/03 23:51:47 by gbianco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	put_points(t_frame *t)
 	int start;
 	int	i;
 	int j;
+	int m;
 
 	points = t->spr.cnt + 1;
 	start = 8;
@@ -27,8 +28,9 @@ void	put_points(t_frame *t)
 		while (++j < 3)
 		{
 			i = -1;
+			m = (j + 5) * WIDTH;
 			while (++i < 6)
-				t->sdl.pixels[(j + 5) * WIDTH + (i + start)] = t->spr.clr_pnt;
+				t->sdl.pixels[m + (i + start)] = t->spr.clr_pnt;
 		}
 		start += 10;
 	}
@@ -53,7 +55,7 @@ void	remove_sprite(t_frame *t)
 	}
 }
 
-void	uv_quad(t_frame *t, t_quad *q, double div, int idx)
+void	uv_quad(t_frame *t, t_quad *q, float div, int idx)
 {
 	unsigned int	*texels;
 	unsigned int	color;
@@ -64,7 +66,7 @@ void	uv_quad(t_frame *t, t_quad *q, double div, int idx)
 	texels = (unsigned int*)t->sdl.clt->pixels;
 	u = q->u * div;
 	v = q->v * div;
-	color = texels[u * 64 + v] << 8;
+	color = texels[(u << 6) + v] << 8;
 	if (t->spr.cltd[q->center] < t->spr.wlld[q->left])
 		if (color != 0 && q->left > 0 && q->left < 640)
 			t->sdl.pixels[idx + q->left] = color;
@@ -74,7 +76,7 @@ void	draw_sprite_quad(t_frame *t, int center)
 {
 	t_quad	q;
 	int		idx;
-	double	div;
+	float	div;
 
 	q.center = center;
 	q.side = 1. / t->spr.cltd[center] * DISTSPR;
@@ -83,7 +85,7 @@ void	draw_sprite_quad(t_frame *t, int center)
 	q.right = center + q.hside;
 	q.top = HHEIGHT - q.hside - 1;
 	q.bot = HHEIGHT + q.hside;
-	div = 64. / (double)q.side;
+	div = 64. / (float)q.side;
 	idx = q.top * WIDTH;
 	q.u = 0;
 	while (++q.top < q.bot)

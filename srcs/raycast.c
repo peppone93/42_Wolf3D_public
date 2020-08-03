@@ -6,7 +6,7 @@
 /*   By: gbianco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 19:33:35 by gbianco           #+#    #+#             */
-/*   Updated: 2020/08/02 16:21:42 by gbianco          ###   ########.fr       */
+/*   Updated: 2020/08/03 23:20:16 by gbianco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	cast_ray(t_frame *t)
 {
-	double hor_dist;
-	double ver_dist;
+	float hor_dist;
+	float ver_dist;
 
 	hor_dist = horizontal_intersections(t);
 	t->ray.pos.x = t->plr.pos.x;
@@ -67,7 +67,6 @@ void	start_casting(t_frame *t)
 {
 	draw_sky(t);
 	t->ray.angle = t->cam.ang;
-	t->cam.ang_c = -(HRADFOV);
 	protected_sum(&t->ray.angle, HRADFOV);
 	t->wall.column = -1;
 	while (++t->wall.column < WIDTH)
@@ -78,7 +77,6 @@ void	start_casting(t_frame *t)
 		trace_wall(t);
 		draw_ground(t);
 		protected_dif(&t->ray.angle, t->cam.ang_u);
-		t->cam.ang_c += t->cam.ang_u;
 	}
 	put_sprites(t);
 	put_points(t);

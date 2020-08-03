@@ -6,14 +6,13 @@
 #    By: gbianco <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/13 15:06:40 by gbianco           #+#    #+#              #
-#    Updated: 2020/01/27 17:58:42 by gbianco          ###   ########.fr        #
+#    Updated: 2020/08/03 23:53:26 by gbianco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 OBJD = compiled/
-SANI = -g #-fsanitize=address
-FLAGS = -Wall -Wextra -Werror $(SANI)
+FLAGS = -Wall -Wextra -Werror
 
 SRC = ft_atoi.c\
 	  ft_atol.c\

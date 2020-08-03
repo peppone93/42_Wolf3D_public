@@ -6,7 +6,7 @@
 /*   By: gbianco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 19:42:14 by gbianco           #+#    #+#             */
-/*   Updated: 2020/08/02 17:17:44 by gbianco          ###   ########.fr       */
+/*   Updated: 2020/08/03 23:17:20 by gbianco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define RADFOV	1.04719755119658
 # define HDEGFOV 30.0
 # define HRADFOV 0.52359877559829
+# define UNTCOSC 0.000781249999995
 
 # define DEGQUAD 90.0
 # define RADQUAD 1.570796326794897
@@ -124,14 +125,14 @@ typedef struct		s_plr
 typedef struct		s_ray
 {
 	t_vec2			pos;
-	double			angle;
+	float			angle;
 	char			quarter;
 }					t_ray;
 
 typedef struct		s_wall
 {
-	double			dist;
-	double			scaling;
+	float			dist;
+	float			scaling;
 	int				column;
 	int				check_h;
 	int				check_v;
@@ -142,10 +143,10 @@ typedef struct		s_wall
 
 typedef struct		s_cam
 {
-	double			dist;
-	double			ang;
-	double			ang_u;
-	double			ang_c;
+	float			dist;
+	float			ang;
+	float			ang_u;
+	float			ang_c[WIDTH];
 }					t_cam;
 
 typedef struct		s_spr
@@ -194,10 +195,10 @@ int					check_grid_bx(t_frame *t, t_vec2 *v);
 int					check_grid_by(t_frame *t, t_vec2 *v);
 void				trace_wall(t_frame *t);
 void				distance_coloring(t_frame *t, int reduction);
-double				horizontal_intersections(t_frame *t);
+float				horizontal_intersections(t_frame *t);
 void				horizontal_updir(t_frame *t, t_vec2 *v, int n);
 void				horizontal_downdir(t_frame *t, t_vec2 *v, int n);
-double				vertical_intersections(t_frame *t);
+float				vertical_intersections(t_frame *t);
 void				vertical_rightdir(t_frame *t, t_vec2 *v, int n);
 void				vertical_leftdir(t_frame *t, t_vec2 *v, int n);
 void				check_sprite(t_frame *t, char dir);
@@ -212,8 +213,8 @@ void				sdl_wait(t_frame *t);
 int					sdl_exit(t_frame *t);
 void				read_map(t_frame *t);
 void				print_map(unsigned char *map);
-void				protected_dif(double *angle, double dif);
-void				protected_sum(double *angle, double sum);
+void				protected_dif(float *angle, float dif);
+void				protected_sum(float *angle, float sum);
 void				generate_sky(t_frame *t);
 void				draw_sky(t_frame *t);
 void				draw_ground(t_frame *t);

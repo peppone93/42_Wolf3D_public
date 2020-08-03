@@ -6,7 +6,7 @@
 #    By: pchambon <pchambon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/12 00:20:28 by gbianco           #+#    #+#              #
-#    Updated: 2020/02/06 02:06:27 by pchambon         ###   ########.fr        #
+#    Updated: 2020/08/03 23:53:36 by gbianco          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ NAME = vec.a
 OBJD = compiled/
 FILE = functions_0.c functions_1.c functions_2.c functions_3.c functions_4.c\
 	   functions_5.c
-SANI = -g #-fsanitize=address
-FLAG = -Wall -Werror -Wextra $(SANI)
+FLAG = -Wall -Werror -Wextra
 
 # Colors
 CLRR = \033[0;31m

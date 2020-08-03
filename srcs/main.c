@@ -6,7 +6,7 @@
 /*   By: gbianco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 18:22:14 by gbianco           #+#    #+#             */
-/*   Updated: 2020/08/02 14:54:41 by gbianco          ###   ########.fr       */
+/*   Updated: 2020/08/03 23:56:39 by gbianco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,30 @@ void	scene_init(t_frame *t)
 	t->plr.pos.x *= 64.;
 	t->plr.pos.y *= 64.;
 	t->cam.ang = RADQUAD;
-	t->cam.dist = ((double)HWIDTH) / tan(HRADFOV);
+	t->cam.dist = ((float)HWIDTH) / tan(HRADFOV);
 	t->wall.scaling = 64. * t->cam.dist;
-	t->cam.ang_u = RADFOV / (double)WIDTH;
+	t->cam.ang_u = RADFOV / (float)WIDTH;
 	generate_sky(t);
 	txt_path_init(t);
 	t->spr.clr_pnt = ((unsigned int*)t->sdl.clt->pixels)[695];
+}
+
+void	table_init(t_frame *t)
+{
+	int		i;
+	float	rad;
+	float	unit;
+
+	rad = -0.52359877559829;
+	unit = 1.04719755119658 / 640.;
+	t->cam.ang_c[0] = cos(rad);
+	i = 1;
+	while (i < WIDTH)
+	{
+		rad += unit;
+		t->cam.ang_c[i] = cos(rad);
+		i++;
+	}
 }
 
 int		main(int ac, char **av)
@@ -57,6 +75,7 @@ int		main(int ac, char **av)
 	read_arguments(&t, ac, av);
 	read_map(&t);
 	sdl_init(&t.sdl);
+	table_init(&t);
 	scene_init(&t);
 	start_casting(&t);
 	sdl_wait(&t);

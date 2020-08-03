@@ -15,7 +15,6 @@ SDLC = $(CLRC)[LBSDL]$(CLRW)
 WOLF = $(CLRB)[WLF3D]$(CLRW)
 #------------------------------
 
-SANI = -g -fsanitize=address
 SDL_FL = `sdl2-config --cflags`
 SDL_LB = `sdl2-config --libs`
 GCC = gcc -Wall -Wextra -Werror

@@ -6,7 +6,7 @@
 /*   By: gbianco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 14:39:04 by gbianco           #+#    #+#             */
-/*   Updated: 2020/08/02 14:54:08 by gbianco          ###   ########.fr       */
+/*   Updated: 2020/08/03 22:33:12 by gbianco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	sprite_horizontal_intersection(t_frame *t)
 {
-	double x;
-	double x2;
+	float x;
+	float x2;
 
-	x = t->ray.pos.x / 64.;
+	x = t->ray.pos.x * 0.015625;
 	x2 = (int)x;
 	x2 += 0.5;
 	if (fabs(x2 - x) < SENSSPR)
@@ -51,15 +51,15 @@ void	horizontal_updir(t_frame *t, t_vec2 *p, int n)
 {
 	if (t->wall.check_h == 0)
 	{
-		p->y = (int)(t->ray.pos.y / (double)n + 1);
-		p->y = p->y * (double)n;
+		p->y = (int)(t->ray.pos.y / (float)n + 1);
+		p->y = p->y * (float)n;
 		p->x = t->ray.pos.x + (p->y - t->ray.pos.y) / tan(t->ray.angle);
 		t->ray.pos.x = p->x;
 		t->ray.pos.y = p->y;
 		t->wall.check_h = 1;
 		return ;
 	}
-	p->y = (double)n;
+	p->y = (float)n;
 	p->x = p->y / tan(t->ray.angle);
 	t->ray.pos.x += p->x;
 	t->ray.pos.y += p->y;
@@ -69,21 +69,21 @@ void	horizontal_downdir(t_frame *t, t_vec2 *p, int n)
 {
 	if (t->wall.check_h == 0)
 	{
-		p->y = (int)(t->ray.pos.y / (double)n);
-		p->y = p->y * (double)n - 0.000001;
+		p->y = (int)(t->ray.pos.y / (float)n);
+		p->y = p->y * (float)n - 0.000001;
 		p->x = t->ray.pos.x + (p->y - t->ray.pos.y) / tan(t->ray.angle);
 		t->ray.pos.x = p->x;
 		t->ray.pos.y = p->y;
 		t->wall.check_h = 1;
 		return ;
 	}
-	p->y = -(double)n;
+	p->y = -(float)n;
 	p->x = p->y / tan(t->ray.angle);
 	t->ray.pos.x += p->x;
 	t->ray.pos.y += p->y;
 }
 
-double	horizontal_intersections(t_frame *t)
+float	horizontal_intersections(t_frame *t)
 {
 	t_vec2	p;
 	int		check;
