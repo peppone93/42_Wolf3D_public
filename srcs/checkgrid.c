@@ -26,47 +26,113 @@ int		check_grid(t_frame *t, t_vec2 *v)
 	return (value);
 }
 
-int		check_grid_x(t_frame *t, t_vec2 *v)
+int		check_grid_tx(t_frame *t, t_vec2 *v)
 {
 	double x;
 	double y;
-	double angle;
-
-	x = (v->x + cos(t->cam.ang) * 40) / 64.;
+	double cosinus;
+	
+	cosinus = cos(t->cam.ang); 
+	x = (v->x + cosinus * 32) / 64.;
 	y = v->y / 64.;
 	if (x > 39 || x < 0 || y > 39 || y < 0)
 		return (2);
 	if (t->map[(int)y * 40 + (int)x] == 2)
 		return (2);
-	angle = t->cam.ang + 22. * DEGTORAD;
-	x = (v->x + cos(angle) * 60) / 64.;
+	if (cosinus > 0)
+		x = x + (0.7 - cosinus);
+	else
+		x = x - (0.7 + cosinus);
 	if (t->map[(int)y * 40 + (int)x] == 2)
 		return (2);
-	angle = t->cam.ang - 22. * DEGTORAD;
-	x = (v->x + cos(angle) * 60) / 64.;
+	y += cosinus * 0.2;
+	if (t->map[(int)y * 40 + (int)x] == 2)
+		return (2);
+	y -= cosinus * 0.4;
 	if (t->map[(int)y * 40 + (int)x] == 2)
 		return (2);
 	return (0);
 }
 
-int		check_grid_y(t_frame *t, t_vec2 *v)
+int		check_grid_ty(t_frame *t, t_vec2 *v)
 {
 	double x;
 	double y;
-	double angle;
+	double sinus;
 
+	sinus = sin(t->cam.ang);
 	x = v->x / 64.;
-	y = (v->y + sin(t->cam.ang) * 40) / 64.;
+	y = (v->y + sinus * 32) / 64.;
 	if (x > 39 || x < 0 || y > 39 || y < 0)
 		return (2);
 	if (t->map[(int)y * 40 + (int)x] == 2)
 		return (2);
-	angle = t->cam.ang + 22. * DEGTORAD;
-	y = (v->y + sin(angle) * 60) / 64.;
+	if (sinus > 0)
+		y = y + (0.7 - sinus);
+	else
+		y = y - (0.7 + sinus);
 	if (t->map[(int)y * 40 + (int)x] == 2)
 		return (2);
-	angle = t->cam.ang - 22. * DEGTORAD;
-	y = (v->y + sin(angle) * 60) / 64.;
+	x += sinus * 0.2;
+	if (t->map[(int)y * 40 + (int)x] == 2)
+		return (2);
+	x -= sinus * 0.4;
+	if (t->map[(int)y * 40 + (int)x] == 2)
+		return (2);
+	return (0);
+}
+
+int		check_grid_bx(t_frame *t, t_vec2 *v)
+{
+	double x;
+	double y;
+	double cosinus;
+	
+	cosinus = cos(t->cam.ang); 
+	x = (v->x - cosinus * 32) / 64.;
+	y = v->y / 64.;
+	if (x > 39 || x < 0 || y > 39 || y < 0)
+		return (2);
+	if (t->map[(int)y * 40 + (int)x] == 2)
+		return (2);
+	if (cosinus > 0)
+		x = x - (0.7 - cosinus);
+	else
+		x = x + (0.7 + cosinus);
+	if (t->map[(int)y * 40 + (int)x] == 2)
+		return (2);
+	y += cosinus * 0.2;
+	if (t->map[(int)y * 40 + (int)x] == 2)
+		return (2);
+	y -= cosinus * 0.4;
+	if (t->map[(int)y * 40 + (int)x] == 2)
+		return (2);
+	return (0);
+}
+
+int		check_grid_by(t_frame *t, t_vec2 *v)
+{
+	double x;
+	double y;
+	double sinus;
+
+	sinus = sin(t->cam.ang);
+	x = v->x / 64.;
+	y = (v->y - sinus * 32) / 64.;
+	if (x > 39 || x < 0 || y > 39 || y < 0)
+		return (2);
+	if (t->map[(int)y * 40 + (int)x] == 2)
+		return (2);
+	if (sinus > 0)
+		y = y - (0.7 - sinus);
+	else
+		y = y + (0.7 + sinus);
+	if (t->map[(int)y * 40 + (int)x] == 2)
+		return (2);
+	x += sinus * 0.2;
+	if (t->map[(int)y * 40 + (int)x] == 2)
+		return (2);
+	x -= sinus * 0.4;
 	if (t->map[(int)y * 40 + (int)x] == 2)
 		return (2);
 	return (0);

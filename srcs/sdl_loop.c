@@ -43,44 +43,37 @@ int		continuously_collisions_top(t_frame *t)
 	int check;
 
 	check = 0;
-	if (check_grid_x(t, &t->plr.pos) != 2)
+	if (check_grid_tx(t, &t->plr.pos) != 2)
 	{
-		t->plr.pos.x += cos(t->cam.ang) * SPEED;
+		t->plr.pos.x = t->plr.pos.x + cos(t->cam.ang) * SPEED;
 		check = 1;
 	}
-	if (check_grid_y(t, &t->plr.pos) != 2)
+	if (check_grid_ty(t, &t->plr.pos) != 2)
 	{
-		t->plr.pos.y += sin(t->cam.ang) * SPEED;
+		t->plr.pos.y = t->plr.pos.y + sin(t->cam.ang) * SPEED;
 		check = 1;
 	}
-	return (check);
+	if (check == 1)
+		return (1);
+	return (0);
 }
 
 int		continuously_collisions_bot(t_frame *t)
 {
-	t_vec2 temp;
-	t_vec2 newpos;
+	int check;
 
-	temp.x = t->plr.pos.x;
-	temp.y = t->plr.pos.y;
-	newpos.x = temp.x - cos(t->cam.ang) * STOPR;
-	newpos.y = temp.y;
-	if (check_grid(t, &newpos) != 2)
-		t->plr.pos.x -= cos(t->cam.ang) * SPEED;
-	newpos.x = temp.x;
-	newpos.y = temp.y - sin(t->cam.ang) * STOPR;
-	if (check_grid(t, &newpos) != 2)
-		t->plr.pos.y -= sin(t->cam.ang) * SPEED;
-	if (t->plr.pos.x != temp.x && t->plr.pos.y != temp.y)
+	check = 0;
+	if (check_grid_bx(t, &t->plr.pos) != 2)
 	{
-		newpos.x = temp.x - cos(t->cam.ang) * STOPR;
-		if (check_grid(t, &newpos) == 2)
-		{
-			t->plr.pos.x = temp.x;
-			t->plr.pos.y = temp.y;
-		}
+		t->plr.pos.x = t->plr.pos.x - cos(t->cam.ang) * SPEED;
+		check = 1;
 	}
-	if (t->plr.pos.x != temp.x || t->plr.pos.y != temp.y)
+	if (check_grid_by(t, &t->plr.pos) != 2)
+	{
+		t->plr.pos.y = t->plr.pos.y - sin(t->cam.ang) * SPEED;
+		check = 1;
+	}
+	if (check == 1)
 		return (1);
 	return (0);
 }
@@ -98,12 +91,12 @@ void	sdl_handekeys(t_frame *t)
 		remove_sprite(t);
 	if (t->sdl.key.rht == 1)
 	{
-		protected_dif(&t->cam.ang, 0.015 * SPEED);
+		protected_dif(&t->cam.ang, 0.008 * SPEED);
 		check = 1;
 	}
 	if (t->sdl.key.lft == 1)
 	{
-		protected_sum(&t->cam.ang, 0.015 * SPEED);
+		protected_sum(&t->cam.ang, 0.008 * SPEED);
 		check = 1;
 	}
 	if (check == 1)

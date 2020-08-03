@@ -17,6 +17,8 @@
 # include "libft.h"
 # include "vec.h"
 
+# include "stdio.h"
+
 # define DEGTORAD 0.017453292519943
 # define RADTODEG 57.29577951308232
 
@@ -186,8 +188,10 @@ void				sdl_cleaner(t_sdl *sdl);
 void				start_casting(t_frame *t);
 void				cast_ray(t_frame *t);
 int					check_grid(t_frame *t, t_vec2 *v);
-int					check_grid_x(t_frame *t, t_vec2 *v);
-int					check_grid_y(t_frame *t, t_vec2 *v);
+int					check_grid_tx(t_frame *t, t_vec2 *v);
+int					check_grid_ty(t_frame *t, t_vec2 *v);
+int					check_grid_bx(t_frame *t, t_vec2 *v);
+int					check_grid_by(t_frame *t, t_vec2 *v);
 void				trace_wall(t_frame *t);
 void				distance_coloring(t_frame *t, int reduction);
 double				horizontal_intersections(t_frame *t);
