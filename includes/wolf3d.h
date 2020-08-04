@@ -6,7 +6,7 @@
 /*   By: gbianco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 19:42:14 by gbianco           #+#    #+#             */
-/*   Updated: 2020/08/03 23:17:20 by gbianco          ###   ########.fr       */
+/*   Updated: 2020/08/05 15:48:23 by gbianco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "SDL.h"
 # include "libft.h"
 # include "vec.h"
-
-# include "stdio.h"
 
 # define DEGTORAD 0.017453292519943
 # define RADTODEG 57.29577951308232
@@ -41,7 +39,7 @@
 # define SENSSPR 0.015
 # define SENSGRN 0.965
 # define MAXSPRT 25
-# define SPEED 5
+# define SPEED 4.4
 # define STOPR 32
 
 # define WIDTH 640
