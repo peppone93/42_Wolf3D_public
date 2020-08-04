@@ -6,7 +6,7 @@
 /*   By: gbianco <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 19:42:14 by gbianco           #+#    #+#             */
-/*   Updated: 2020/08/03 23:17:20 by gbianco          ###   ########.fr       */
+/*   Updated: 2020/08/04 22:47:18 by gbianco          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "SDL.h"
 # include "libft.h"
 # include "vec.h"
-
-# include "stdio.h"
 
 # define DEGTORAD 0.017453292519943
 # define RADTODEG 57.29577951308232
