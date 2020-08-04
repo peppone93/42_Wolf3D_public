@@ -21,6 +21,7 @@ __Bonus options:__
 - Wall collisions
 - Floor texture
 - Sky (Color Gradient)
+- Distance fog
 - Items in the maze
 - Collectables items
 
