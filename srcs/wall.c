@@ -63,7 +63,7 @@ int		wall_texture(t_frame *t, float height, int i)
 	margin = height - HEIGHT;
 	if (margin > 0)
 		i = i + (margin >> 1);
-	y = 64. / height * i;
+	y = 63. / height * i;
 	force = NULL;
 	oriented_texture(t, &force);
 	t->sdl.color = (force[(y << 6) + x] << 8) + 0xff;
