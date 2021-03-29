@@ -25,10 +25,6 @@ __Bonus options:__
 - Items in the maze
 - Collectables items
 
-<p align="center">
-  <img src="Screens/wolf3d.gif" />
-</p>
-
 ![alt text](Screens/1.png)
 ![alt text](Screens/2.png)
 ![alt text](Screens/3.png)
@@ -36,6 +32,11 @@ __Bonus options:__
 ![alt text](Screens/5.png)
 ![alt text](Screens/6.png)
 ![alt text](Screens/7.png)
+
+<p align="center">
+  <img src="Screens/wolf3d.gif" />
+</p>
+
 
 
 Instructions:
