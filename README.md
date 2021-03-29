@@ -25,7 +25,10 @@ __Bonus options:__
 - Items in the maze
 - Collectables items
 
-![alt text](https://github.com/peppone93/42_wolf3d/blob/master/Screens/wolf3d.gif)
+<p align="center">
+  <img src="Screens/wolf3d.gif" />
+</p>
+
 ![alt text](Screens/1.png)
 ![alt text](Screens/2.png)
 ![alt text](Screens/3.png)
