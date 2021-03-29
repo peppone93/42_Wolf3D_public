@@ -1,4 +1,4 @@
-Wolf3D
+# Wolf3D
 
 This project’s goal is to follow the footsteps of the brilliant programmer John Carmack to write our personal version of Wolfenstein 3D.
 The objective is not to re-write the entire Wolfenstein 3D, but a 3D representation of a maze in which a player can find his way using the ray casting technique.
