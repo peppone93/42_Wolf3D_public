@@ -41,4 +41,4 @@ Instructions:
 - Usage: ./wolf3d [map] /[texturepack]
 - (The package "xorg-dev" is required to ensure the SDL operations)
 
-For this project I decided to make all files public but please do not hesitate to contact me if need additional details.
+_For this project I decided to make all files public but please do not hesitate to contact me if need additional details._
